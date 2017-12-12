@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SphereOfProgressController : MonoBehaviour {
+public class UnlockChest : MonoBehaviour {
 	private VRTK.VRTK_InteractableObject interactScript;
-
+	private GameObject mLid;
 
 	// Use this for initialization
 	void Start () {
-		interactScript = GetComponent<VRTK.VRTK_InteractableObject> ();
-		interactScript.isGrabbable = false; 
+		mLid = transform.Find ("Lid").gameObject;
+		interactScript = mLid.GetComponent<VRTK.VRTK_InteractableObject> ();
+		interactScript.isGrabbable = false;
 	}
 
-	void UnlockSphereOfProgress() {
+	void Unlock() {
 		GetComponent<Renderer> ().material.color = Color.yellow;
 		interactScript.isGrabbable = true;
 	}
 
 	void OnEnable() {
-		SimpleBlockPuzzleController.onPuzzleSolved += UnlockSphereOfProgress;
+		SimpleBlockPuzzleController.onPuzzleSolved += Unlock;
 	}
 
 	void OnDisable() {
-		SimpleBlockPuzzleController.onPuzzleSolved -= UnlockSphereOfProgress;
+		SimpleBlockPuzzleController.onPuzzleSolved -= Unlock;
 	}
 	
 	// Update is called once per frame

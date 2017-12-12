@@ -14,7 +14,7 @@ public class DialBlockController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// get references to our dial and block game objects
-		mBlock = transform.Find("Block").gameObject;
+		mBlock = transform.Find("Wall").gameObject;
 		GameObject handController = transform.Find ("HandController").gameObject;
 		GameObject controllerBase = handController.transform.Find ("Base").gameObject;
 		mDial = controllerBase.transform.Find ("Dial").gameObject;
