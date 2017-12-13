@@ -8,13 +8,13 @@ public class UnlockChest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		mLid = transform.Find ("Lid").gameObject;
+		mLid = GameObject.Find ("Lid");
 		interactScript = mLid.GetComponent<VRTK.VRTK_InteractableObject> ();
 		interactScript.isGrabbable = false;
 	}
 
 	void Unlock() {
-		GetComponent<Renderer> ().material.color = Color.yellow;
+		//GetComponent<Renderer> ().material.color = Color.yellow;
 		interactScript.isGrabbable = true;
 	}
 
